@@ -1,0 +1,6 @@
+Content.o: Content.c Content.h Line.h
+ContentTest.o: ContentTest.c ContentTest.h Content.h Line.h
+Line.o: Line.c Line.h
+LineTest.o: LineTest.c LineTest.h Line.h
+Main.o: Main.c TextUtil.h Line.h LineTest.h ContentTest.h TextUtilTest.h
+TextUtilTest.o: TextUtilTest.c TextUtilTest.h TextUtil.h
