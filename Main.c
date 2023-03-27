@@ -27,7 +27,7 @@
 int main (void) {//int argc, char * argv[]
   LineTest_runAll();
   ContentTest_runAll();
-  // TextUtilTest_runAll();
+  TextUtilTest_runAll();
 
   // bool isShortHelp= (argc == 1+1 && strcmp (argv[1], "-h"   ) == 0);
   // bool isLongHelp = (argc == 1+1 && strcmp (argv[1], "-help") == 0);

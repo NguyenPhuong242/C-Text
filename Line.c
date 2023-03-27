@@ -97,3 +97,13 @@ char *Line_findNthString(Line line, char const string[], int nth)
         start = zero + 1;
     }
 }
+
+void Line_printFromTo   (Line line, size_t start, size_t end, FILE * file){
+    
+}; 
+void Line_print         (Line line, FILE * file){
+    
+};
+void Line_printBackward (Line line, FILE * file){
+
+};

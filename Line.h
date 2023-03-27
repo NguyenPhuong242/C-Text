@@ -26,9 +26,9 @@ bool Line_startsWithNL (Line line);
 char * Line_findString    (Line line, char const string[]);
 char * Line_findNthString (Line line, char const string[], int nth);
 
-// void Line_printFromTo   (Line line, size_t start, size_t end, FILE * file); 
-// void Line_print         (Line line, FILE * file);
-// void Line_printBackward (Line line, FILE * file);
+void Line_printFromTo   (Line line, size_t start, size_t end, FILE * file); 
+void Line_print         (Line line, FILE * file);
+void Line_printBackward (Line line, FILE * file);
 
 //==============================================================================
 
