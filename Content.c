@@ -12,18 +12,15 @@ Content Content_read(FILE * file, size_t initialCapacity){
         Line line = Line_read(file, 80);
         if(count == capacity){
             size_t newCapacity = 2 * capacity;
-            printf("content_a\n");
-            Line * newLines = realloc(lines, newCapacity * sizeof * lines);
-            /*Line * newLines = realloc(lines, newCapacity * sizeof(Line));*/
+            /*Line * newLines = realloc(lines, newCapacity * sizeof * lines);*/
+            Line * newLines = realloc(lines, newCapacity * sizeof(Line));
             assert(newLines != NULL);
+            lines = newLines;
             capacity = newCapacity;
         }
         lines[count]= line; count++;
         if(Line_isEnd(line)) break;
     }
-    printf("capacity = %zu\n", capacity);
-    printf("content_b, count = %zu\n", count);
-    printf("size = %zu\n", count * sizeof(Line));
     /*lines = realloc (lines, count * sizeof * lines);*/
     lines = realloc(lines, count * sizeof(Line));
     if (lines == NULL){
@@ -32,7 +29,6 @@ Content Content_read(FILE * file, size_t initialCapacity){
             else
             printf("other\n");
     }
-    printf("toto\n");
     return (Content){
         .lines = lines, 
         .lineCount = count-1, 

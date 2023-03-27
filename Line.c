@@ -20,7 +20,6 @@ Line Line_read(FILE *file, size_t initialCapacity)
         if (length == capacity - 1)
         {
             size_t newCapacity = 2 * capacity;
-            printf("line_a\n");
             char * newChars = realloc(chars, newCapacity);
             assert(newChars != NULL);
             chars = newChars;
@@ -32,7 +31,6 @@ Line Line_read(FILE *file, size_t initialCapacity)
             break;
     }
     chars[length] = '\0';
-    printf("line_b\n");
     chars = realloc(chars, length+1);
     return (Line)
     {
@@ -99,11 +97,34 @@ char *Line_findNthString(Line line, char const string[], int nth)
 }
 
 void Line_printFromTo   (Line line, size_t start, size_t end, FILE * file){
-    
-}; 
-void Line_print         (Line line, FILE * file){
-    
-};
-void Line_printBackward (Line line, FILE * file){
+    for(;start < end;start++ ){
+        fprintf(file, "%c", line.chars[start]);
+    }
+}
 
-};
+void Line_print         (Line line, FILE * file){
+    for(int i = 0; i < (int) line.length; i ++){
+        fprintf(file,"%c", line.chars[i]);
+    }
+}
+
+void Line_printBackward (Line line, FILE * file){
+    for(int i = line.length - 1; i > 0; i--){
+        if(line.chars[line.length - 1] == '\n'){
+            if(i-1 > 0){
+                fprintf(file, "%c", line.chars[i-1]);
+            }
+            if(i-1 == 0){
+                fprintf(file, "%c", '\n');
+            }
+        }
+        else{
+            fprintf(file,"%c", line.chars[i]);
+        }
+           
+    }
+}
+
+
+
+

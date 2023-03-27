@@ -92,67 +92,67 @@ LineTest_findNthString (void) {
 
 //------------------------------------------------------------------------------
 
-// void
-// LineTest_printFromTo(void) {
-//   {
-//     char * printed; size_t size;
-//     FILE * file= open_memstream (& printed, & size);
-//     Line_printFromTo ((Line){ .length= 8, .chars= "aa\0bb\0cc"}, 0, 4, file);
-//     fclose (file);
-//     assert (size == 4 && memcmp (printed, "aa\0b", size) == 0);
-//     free (printed);
-//   } {
-//     char * printed; size_t size;
-//     FILE * file= open_memstream (& printed, & size);
-//     Line_printFromTo ((Line){ .length= 9, .chars= "aa\0bb\0cc\n"}, 3, 9, file);
-//     fclose (file);
-//     assert (size == 6 && memcmp (printed, "bb\0cc\n", size) == 0);
-//     free (printed);
-//   }
-// }
+void
+LineTest_printFromTo(void) {
+  {
+    char * printed; size_t size;
+    FILE * file= open_memstream (& printed, & size);
+    Line_printFromTo ((Line){ .length= 8, .chars= "aa\0bb\0cc"}, 0, 4, file);
+    fclose (file);
+    assert (size == 4 && memcmp (printed, "aa\0b", size) == 0);
+    free (printed);
+  } {
+    char * printed; size_t size;
+    FILE * file= open_memstream (& printed, & size);
+    Line_printFromTo ((Line){ .length= 9, .chars= "aa\0bb\0cc\n"}, 3, 9, file);
+    fclose (file);
+    assert (size == 6 && memcmp (printed, "bb\0cc\n", size) == 0);
+    free (printed);
+  }
+}
 
 
-// //------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
-// void
-// LineTest_print(void) {
-//   {
-//     char * printed; size_t size;
-//     FILE * file= open_memstream (& printed, & size);
-//     Line_print ((Line) { .length= 8, .chars= "aa\0bb\0cc"}, file);
-//     fclose (file);
-//     assert (size == 8 && memcmp (printed, "aa\0bb\0cc", size) == 0);
-//     free (printed);
-//   } {
-//     char * printed; size_t size;
-//     FILE * file= open_memstream (& printed, & size);
-//     Line_print ((Line) { .length= 9, .chars= "aa\0bb\0cc\n"}, file);
-//     fclose (file);
-//     assert (size == 9 && memcmp (printed, "aa\0bb\0cc\n", size) == 0);
-//     free (printed);
-//   }
-// }
+void
+LineTest_print(void) {
+  {
+    char * printed; size_t size;
+    FILE * file= open_memstream (& printed, & size);
+    Line_print ((Line) { .length= 8, .chars= "aa\0bb\0cc"}, file);
+    fclose (file);
+    assert (size == 8 && memcmp (printed, "aa\0bb\0cc", size) == 0);
+    free (printed);
+  } {
+    char * printed; size_t size;
+    FILE * file= open_memstream (& printed, & size);
+    Line_print ((Line) { .length= 9, .chars= "aa\0bb\0cc\n"}, file);
+    fclose (file);
+    assert (size == 9 && memcmp (printed, "aa\0bb\0cc\n", size) == 0);
+    free (printed);
+  }
+}
 
-// //------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
-// void
-// LineTest_printBackward(void) {
-//   {
-//     char * printed; size_t size;
-//     FILE * file= open_memstream (& printed, & size);
-//     Line_printBackward ((Line) { .length= 8, .chars= "aa\0bb\0cc"}, file);
-//     fclose (file);
-//     assert (size == 8 && memcmp (printed, "cc\0bb\0aa", size) == 0);
-//     free (printed);
-//   } {
-//     char * printed; size_t size;
-//     FILE * file= open_memstream (& printed, & size);
-//     Line_printBackward ((Line) { .length= 9, .chars= "aa\0bb\0cc\n"}, file);
-//     fclose (file);
-//     assert (size == 9 && memcmp (printed, "cc\0bb\0aa\n", size) == 0);
-//     free (printed);
-//   }
-// }
+void
+LineTest_printBackward(void) {
+  {
+    char * printed; size_t size;
+    FILE * file= open_memstream (& printed, & size);
+    Line_printBackward ((Line) { .length= 8, .chars= "aa\0bb\0cc"}, file);
+    fclose (file);
+    assert (size == 8 && memcmp (printed, "cc\0bb\0aa", size) == 0);
+    free (printed);
+  } {
+    char * printed; size_t size;
+    FILE * file= open_memstream (& printed, & size);
+    Line_printBackward ((Line) { .length= 9, .chars= "aa\0bb\0cc\n"}, file);
+    fclose (file);
+    assert (size == 9 && memcmp (printed, "cc\0bb\0aa\n", size) == 0);
+    free (printed);
+  }
+}
 
 //------------------------------------------------------------------------------
 
@@ -163,7 +163,7 @@ void LineTest_runAll (void) {
   LineTest_endsWithNL();
   LineTest_findString();
   LineTest_findNthString();
-  // LineTest_printFromTo();
-  // LineTest_print();
-  // LineTest_printBackward();
+  LineTest_printFromTo();
+  LineTest_print();
+  LineTest_printBackward();
 }
