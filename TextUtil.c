@@ -32,5 +32,28 @@ size_t TextUtil_runNlOnFile (FILE * file, size_t numStart, size_t numStep, bool 
 };
 
 int TextUtil_runNl (int argc, char * argv[], FILE * output){
+    int status = 0;
+    size_t start = atoi (argv[2]);
+    size_t step = atoi (argv[3]);
+    bool skipEmpty = strcmp(argv[4], "skip") == 0;
+    size_t num = start;
+    if(argc == 1+4){
+        num = TextUtil_runNlOnFile(stdin, num, step, skipEmpty, output);
+        return status;
+    }
+
+    for(int k = 5; k < argc; k++){
+        bool isDash = (strcmp(argv[k], "-") == 0);
+        char * filename = isDash ? "/dev/fd/0" : argv[k];
+        FILE * file = fopen(filename, "r");
+        if(file == NULL){
+            fprintf(stderr, "error: could not open file '%s'\n", filename);
+            status++;
+            continue;
+        }
+        num = TextUtil_runNlOnFile(file, num, step, skipEmpty, output);
+        fclose(file);
+    }
+    return status;
 
 };
